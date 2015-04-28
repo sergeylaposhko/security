@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zesarApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zasar application</title>
+
+
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
+
+
+
+</head>
+
+<body ng-controller="ZesarController">
+
+    <div class="container">
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="well bs-component">
+
+
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="inputValue" class="col-lg-2 control-label">Input value</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputValue" placeholder="Value" ng-model="input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputKey" class="col-lg-2 control-label">Key</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputKey" placeholder="Key" ng-model="key">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="endcoded" class="col-lg-2 control-label">Encoded</label>
+                        <div class="col-lg-10">
+                            {{encode(input, key)}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="decoded" class="col-lg-2 control-label">Decoded</label>
+                        <div class="col-lg-10">
+                            {{decode(encode(input,key), key)}}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // This command is used to initialize some elements and make them work properly
+        $.material.init();
+    });
+</script>
