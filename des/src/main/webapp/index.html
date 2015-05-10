@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rsaApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zasar application</title>
+
+
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
+
+
+
+</head>
+
+<body ng-controller="RsaController">
+
+    <div class="container">
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="well bs-component">
+
+
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="inputValue" class="col-sm-2 control-label">Input value</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputValue" placeholder="Value" ng-model="input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputKey" class="col-sm-2 control-label">Input key(string value)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputKey" placeholder="Value" ng-model="key">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10" style="word-break: break-all;">
+                            <strong>Received encrypted:</strong>{{encr}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <strong>Rceived decrypted:</strong>{{decr}}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="sendData()">Send data</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Keys info
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    Key hash: {{keyHash}}<br/>
+                    Keys:
+                    <ol>
+                        <li ng-repeat="item in keys">{{item}}</li>
+                    </ol>
+                    Keys in binary:
+                    <ol>
+                        <li ng-repeat="item in keysStrings">{{item}}</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // This command is used to initialize some elements and make them work properly
+        $.material.init();
+    });
+</script>
