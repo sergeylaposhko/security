@@ -70,17 +70,18 @@
                     Key hash: {{keyHash}}<br/>
                     Keys:
                     <ol>
-                        <li ng-repeat="item in keys">{{item}}</li>
+                        <li ng-repeat="item in keys track by $index">{{item}}</li>
                     </ol>
                     Keys in binary:
                     <ol>
-                        <li ng-repeat="item in keysStrings">{{item}}</li>
+                        <li ng-repeat="item in keysStrings track by $index">{{item}}</li>
                     </ol>
                 </div>
             </div>
 
         </div>
     </div>
+
 
 </body>
 
