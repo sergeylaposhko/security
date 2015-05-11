@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rsaApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zasar application</title>
+
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
+
+
+</head>
+
+<body ng-controller="RsaController">
+
+<div class="container">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="well bs-component">
+
+
+        <form class="form-horizontal" enctype="multipart/form-data">
+            Getting digest
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        Generated digest: {{serverDigest}}
+                    </div>
+                </div>
+                <div class="btn" ngf-select="" ng-model="getDigestFile" ngf-multiple="multiple">Slect file</div>
+                <div class="fom-group">
+                    <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                         ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false"
+                         ngf-accept="'*'">Drop file here
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <button type="button" class="btn btn-primary" ng-click="getDigest()">Get digest</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <form class="form-horizontal" ng-submit="sendData()" enctype="multipart/form-data">
+
+            Checking digest
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="inputDigest" class="col-sm-2 control-label">Input digest</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputDigest" placeholder="Value"
+                               ng-model="digest">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        Generated crc: {{crc}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        {{checkDigestRes}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        Public key: {{publicKey}}<br/>
+                        Private key: {{privateKey}}<br/>
+                        N: {{n}}<br/>
+                    </div>
+                </div>
+                <div class="btn" ngf-select="" ng-model="files" ngf-multiple="multiple">Slect file</div>
+                <div class="fom-group">
+                    <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                         ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false"
+                         ngf-accept="'*'">Drop file here
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <button type="button" class="btn btn-primary" ng-click="generateCrc()">Generate crc</button>
+                        <button type="button" class="btn btn-primary" ng-click="sendData()">Send data</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+
+    </div>
+</div>
+
+</body>
+
+</html>
+
+<script src="BigInteger.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // This command is used to initialize some elements and make them work properly
+        $.material.init();
+    });
+</script>
