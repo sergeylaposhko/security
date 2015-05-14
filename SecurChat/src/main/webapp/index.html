@@ -57,10 +57,13 @@
                 <div class="well">
                     <button class="btn btn-primary" ng-click="updateMessages()">Update</button>
 
+                    <input type="text" ng-value="messageToSend"/>
+                    <button class="btn btn-primary" ng-click="sendMessage()">Send Message</button>
+
                     <ul>
                         <div ng-repeat="message in messages">
                             Original: {{message.original}}<br/>
-                            Decrypted: {{message.original}}<br/>
+                            Decrypted: {{message.decrypted}}<br/>
                         </div>
                     </ul>
 

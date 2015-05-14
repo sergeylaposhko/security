@@ -3,10 +3,7 @@ package com.my;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -28,14 +25,11 @@ public class MController {
     @RequestMapping(value = "message", produces = {"application/json"}, method = RequestMethod.POST)
     public
     @ResponseBody
-    List<Message> postMessage(@RequestParam(value = "login") String login,
-                       @RequestParam(value = "message") String message) throws JsonProcessingException {
-        logger.debug("Start handling request with login: " + login);
+    List<Message> postMessage(@RequestBody Message message) throws JsonProcessingException {
+        logger.debug("Start handling request with login: " + message);
         logger.debug("Start handling request with message: " + message);
 
-        Message messageObject = new Message();
-        messageObject.setSender(login);
-        messageObject.setValue(message);
+        Message messageObject = message;
 
         messages.add(messageObject);
 

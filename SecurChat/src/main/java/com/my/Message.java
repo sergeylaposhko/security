@@ -23,4 +23,12 @@ public class Message {
     public void setSender(String sender) {
         this.sender = sender;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "value='" + value + '\'' +
+                ", sender='" + sender + '\'' +
+                '}';
+    }
 }
